@@ -6,10 +6,11 @@ btn.innerHTML = _unmute
 btn.addEventListener('click', () => {
     mute = !mute
     mute ? btn.innerHTML = _unmute : btn.innerHTML = _mute
+    document.getElementById('music').play()
     document.getElementById('music').muted = mute
 })
 btn.id = 'mute-btn'
-document.querySelector('html').appendChild(btn)
+document.querySelector('body').appendChild(btn)
 
 const name = document.getElementById('name')
 name.innerText = window.location.hash.slice(1).replace(/%20/g, ' ') || 'to you'
@@ -24,6 +25,7 @@ window.addEventListener('resize', function() {
     canvas.width = window.innerWidth
     canvas.height = window.innerHeight
 })
+ctx.imageSmoothingEnabled = false
 const gift_img = document.getElementById('gift_img')
 let Konfettis = []
 const Gifts = []
@@ -46,7 +48,7 @@ class Surprise {
     }
     update() {
         this.size -= this.speed
-        this.speed += .001
+        this.speed += .00375
         this.speedX *= this.friction
         this.speedY *= this.friction
         this.x += this.speedX
