@@ -25,7 +25,6 @@ window.addEventListener('resize', function() {
     canvas.width = window.innerWidth
     canvas.height = window.innerHeight
 })
-ctx.imageSmoothingEnabled = false
 const gift_img = document.getElementById('gift_img')
 let Konfettis = []
 const Gifts = []
@@ -58,7 +57,10 @@ class Surprise {
         }
     }
     draw() {
+        ctx.save()
+        ctx.imageSmoothingEnabled = false
         this.ctx.drawImage(this.image, this.x, this.y, this.size, this.size)
+        ctx.restore()
     }
 }
 
